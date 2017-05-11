@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class Program
+   public  interface IKonto
     {
-        static void Main(string[] args)
-        {
+        string nrKonta { get; }
 
-        }
+        double saldo { get; }
+
+        void wplac(double kwota);
+
+        void wyplac(double kwota);
     }
 }

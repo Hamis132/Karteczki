@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class Program
+    public interface IKlient
     {
-        static void Main(string[] args)
-        {
+        List<Konto> konta { get; }
 
-        }
+        void dodajKonto(Konto konto);
+
+        List<Konto> getKonta();
+
     }
+
 }
