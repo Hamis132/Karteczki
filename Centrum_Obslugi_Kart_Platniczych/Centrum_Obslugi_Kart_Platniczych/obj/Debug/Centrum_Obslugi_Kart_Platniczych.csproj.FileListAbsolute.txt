@@ -1,1 +1,7 @@
 C:\Users\pawel\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\bin\Debug\Centrum_Obslugi_Kart_Platniczych.exe.config
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\bin\Debug\Centrum_Obslugi_Kart_Platniczych.exe.config
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\bin\Debug\Centrum_Obslugi_Kart_Platniczych.exe
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\bin\Debug\Centrum_Obslugi_Kart_Platniczych.pdb
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\obj\Debug\Centrum_Obslugi_Kart_Platniczych.csprojResolveAssemblyReference.cache
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\obj\Debug\Centrum_Obslugi_Kart_Platniczych.exe
+C:\Users\Paweł H\Desktop\ProjekcikPO\Karteczki\Centrum_Obslugi_Kart_Platniczych\Centrum_Obslugi_Kart_Platniczych\obj\Debug\Centrum_Obslugi_Kart_Platniczych.pdb

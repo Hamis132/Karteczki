@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class Program
+    interface IBank
     {
-        static void Main(string[] args)
-        {
+        List<Klient> klienci { get; }
 
-        }
+        void dodajKlienta(IKlient klient);
+
+        List<Klient> getKlienci();
+
+
     }
 }
