@@ -3,25 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    public class Konto : IKonto
+    
+    class Konto : IKonto
     {
-        public string nrKonta { get; protected set; }
+       
+        public string nrKonta { get; }
 
+        public decimal saldo { get; set; } = 0.00M;
 
-        public double saldo { get; protected set; }
+        public Konto() { }
 
-
-        public void wplac(double kwota)
+        public Konto(string nrKonta)
         {
-            throw new NotImplementedException();
+            this.nrKonta = nrKonta;
         }
 
-        public void wyplac(double kwota)
+        public bool wplac(decimal kwota)
         {
-            throw new NotImplementedException();
+            saldo += kwota;
+            return true;
+        }
+
+        public bool wyplac(decimal kwota)
+        {
+            if(saldo - kwota >=0.00M)
+            {
+                saldo -= kwota;
+                return true;
+            }
+            return false;
         }
     }
 }

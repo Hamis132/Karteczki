@@ -8,11 +8,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     interface IBank
     {
-        List<Klient> klienci { get; }
+        List<IKlient> klienci { get; }
 
-        void dodajKlienta(IKlient klient);
+        bool dodajKlienta(IKlient klient);
 
-        List<Klient> getKlienci();
+        List<IKlient> getKlienci();
 
 
     }

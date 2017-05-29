@@ -10,7 +10,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         static void Main(string[] args)
         {
-
+           
         }
     }
 }

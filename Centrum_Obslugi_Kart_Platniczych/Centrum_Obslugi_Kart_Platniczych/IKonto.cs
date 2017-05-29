@@ -10,10 +10,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         string nrKonta { get; }
 
-        double saldo { get; }
+        decimal saldo { get; }
 
-        void wplac(double kwota);
+        bool wplac(decimal kwota);
 
-        void wyplac(double kwota);
+        bool wyplac(decimal kwota);
     }
 }

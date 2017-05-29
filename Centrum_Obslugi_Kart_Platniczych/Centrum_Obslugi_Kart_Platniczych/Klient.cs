@@ -6,18 +6,23 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    public abstract class Klient : IKlient
+    abstract class Klient : IKlient
     {
-        public List<Konto> konta{ get; set; } = new List<Konto>();
+        public List<IKonto> konta{ get; protected set; } = new List<IKonto>();
 
-        public void dodajKonto(Konto konto)
+        public bool dodajKonto(IKonto konto)
         {
-            throw new NotImplementedException();
+            if(konto != null)
+            {
+                konta.Add(konto);
+                return true;
+            }
+            return false;
         }
 
-        public List<Konto> getKonta()
+        public List<IKonto> getKonta()
         {
-            throw new NotImplementedException();
+            return konta;
         }
     }
 }

@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    public class Bank : IBank
+    class Bank : IBank
     {
-        public List<Klient> klienci { get; protected set; } = new List<Klient>();
+        public List<IKlient> klienci { get; protected set; } = new List<IKlient>();
 
-        public void dodajKlienta(IKlient klient)
+        public bool dodajKlienta(IKlient klient)
         {
-            throw new NotImplementedException();
+            if(klient != null)
+            {
+                klienci.Add(klient);
+                return true;
+            }
+            return false;
         }
 
-        public List<Klient> getKlienci()
+        public List<IKlient> getKlienci()
         {
-            throw new NotImplementedException();
+            return klienci;
         }
+
     }
 }
