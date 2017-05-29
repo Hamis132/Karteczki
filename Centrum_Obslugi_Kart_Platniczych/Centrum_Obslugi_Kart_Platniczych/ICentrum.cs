@@ -8,6 +8,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     interface ICentrum
     {
+        List<IBank> banki { get; }
 
+        bool autoryzacja(string NrKarty, int PIN, decimal kwota);
     }
 }

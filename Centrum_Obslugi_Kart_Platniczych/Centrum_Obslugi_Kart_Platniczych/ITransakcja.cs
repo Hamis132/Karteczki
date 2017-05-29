@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    interface IFirma : IKlient
+    interface ITransakcja
     {
-        ICentrum centrum { get; }
+        DateTime data { get; }
 
-        bool autorisationRequest(string NrKarty, int PIN, decimal kwota);
+        decimal kwota { get; }
+
+        bool udana { get; }
+
+        string nrKonta { get; }
 
     }
 }

@@ -14,6 +14,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         List<IKlient> getKlienci();
 
+        bool decyzjaTransakcji();
 
+        bool autoryzacja(string NrKarty, int PIN, decimal kwota);
     }
 }
