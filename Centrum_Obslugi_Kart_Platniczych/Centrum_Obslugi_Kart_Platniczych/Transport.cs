@@ -27,10 +27,15 @@ namespace Centrum_Obslugi_Kart_Platniczych
         }
         return false;
     }
-
+    
     public List<IKonto> getKonta()
-    {
-        return konta;
+        {
+            return konta;
+        }
+
+        public bool autorisationRequest(string NrKarty, int PIN, decimal kwota)
+        {
+            throw new NotImplementedException();
+        }
     }
-}
 }
