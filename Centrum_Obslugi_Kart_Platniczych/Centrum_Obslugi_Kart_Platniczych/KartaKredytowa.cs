@@ -8,7 +8,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     class KartaKredytowa : Karta
     {
-        double Saldo = 2000.00;
+        decimal Saldo = 2000.00M;
         public KartaKredytowa(string imie, string nazwisko, int PIN, string nrKarty) : base (imie,nazwisko,PIN, nrKarty)
         { }
 

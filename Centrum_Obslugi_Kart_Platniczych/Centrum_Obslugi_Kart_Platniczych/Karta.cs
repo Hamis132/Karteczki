@@ -9,11 +9,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
     class Karta : IKarta
     {
         public string NrKarty { get; }
-        public int PIN { get; }
+        protected int PIN { get; set; }
         public DateTime DataWaznosci { get; } 
         public string Imie { get; }
         public string Nazwisko { get; }
-        public Karta() { }
         public Karta(string Imie, string Nazwisko, int PIN, string NrKarty)
         {
             this.Imie = Imie;
