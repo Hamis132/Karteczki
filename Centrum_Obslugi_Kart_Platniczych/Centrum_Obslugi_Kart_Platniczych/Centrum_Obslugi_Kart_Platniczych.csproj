@@ -48,8 +48,13 @@
     <Compile Include="IFirma.cs" />
     <Compile Include="IBank.cs" />
     <Compile Include="ICentrum.cs" />
+    <Compile Include="IKarta.cs" />
     <Compile Include="IKonto.cs" />
     <Compile Include="IKlient.cs" />
+    <Compile Include="Karta.cs" />
+    <Compile Include="KartaBankomatowa.cs" />
+    <Compile Include="KartaDebetowa.cs" />
+    <Compile Include="KartaKredytowa.cs" />
     <Compile Include="Klient.cs" />
     <Compile Include="Konto.cs" />
     <Compile Include="Program.cs" />
