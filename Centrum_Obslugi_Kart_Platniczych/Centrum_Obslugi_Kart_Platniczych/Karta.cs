@@ -9,7 +9,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
     class Karta : IKarta
     {
         public string NrKarty { get; }
-        protected int PIN { get; set; }
+        public int PIN { get; protected set; }
         public DateTime DataWaznosci { get; } 
         public string Imie { get; }
         public string Nazwisko { get; }

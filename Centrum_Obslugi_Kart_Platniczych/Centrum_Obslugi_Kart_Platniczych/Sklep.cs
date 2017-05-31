@@ -32,5 +32,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             return konta;
         }
+
+        public bool autorisationRequest(string NrKarty, int PIN, decimal kwota)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

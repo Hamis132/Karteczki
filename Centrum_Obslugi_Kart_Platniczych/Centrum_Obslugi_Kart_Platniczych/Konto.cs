@@ -13,6 +13,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
        
         public string nrKonta { get; }
 
+        public List<IKarta> karty { get; protected set; } = new List<IKarta>();
+
+        public bool dodajKarte(IKarta karta)
+        {
+            karty.Add(karta);
+            return true;
+        }
+
         public decimal saldo { get; set; } = 0.00M;
 
         public Konto() { }

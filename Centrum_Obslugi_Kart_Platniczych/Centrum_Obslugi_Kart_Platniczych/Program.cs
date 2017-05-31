@@ -10,7 +10,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         static void Main(string[] args)
         {
-           
+            var test = new Test();
+            Console.WriteLine(test.Test1());
+            Console.ReadKey();    
+        
         }
     }
 }
