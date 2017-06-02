@@ -15,23 +15,23 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool autoryzacja(IKarta karta, int PIN, decimal kwota)
         {
-            foreach(IKlient cos in klienci)
+            foreach(IKlient klient in klienci)
             {
-                foreach(IKonto kon in cos.konta)
+                foreach(IKonto konto in klient.konta)
                 {
-                    foreach(IKarta kart in kon.karty )
+                    foreach(IKarta karteczka in konto.karty )
                     {
-                        if( (Karta)kart == (Karta)karta && PIN == ((Karta)kart).PIN)
+                        if( (Karta)karteczka == (Karta)karteczka && PIN == ((Karta)karteczka).PIN)
                         {
-                            if (kon.saldo - kwota < 0)
+                            if (konto.saldo - kwota < 0)
                             {
-                                return false;
+                                return false;   //Tu bedzie wyjatek zła kwota
                             }
                             else
                             {
                                 if(this.decyzjaTransakcji())
                                 {
-                                    kon.wyplac(kwota);
+                                    konto.wyplac(kwota);
                                     return true;
                                 }
                                 return false;
@@ -40,7 +40,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     }
                 }
             }
-            return false;
+            return false;       //Tu bedzie wyjatek brak konta
         }
 
         private bool decyzjaTransakcji()
@@ -61,7 +61,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 klienci.Add(klient);
                 return true;
             }
-            return false;
+            return false;       
         }
 
         public List<IKlient> getKlienci()

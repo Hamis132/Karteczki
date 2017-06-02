@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bank.cs" />
+    <Compile Include="Centrum.cs" />
+    <Compile Include="Historia.cs" />
     <Compile Include="ITransakcja.cs" />
     <Compile Include="IFirma.cs" />
     <Compile Include="IBank.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Serializacja.cs" />
     <Compile Include="Sklep.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Transakcja.cs" />
     <Compile Include="Transport.cs" />
     <Compile Include="Uslugi.cs" />
   </ItemGroup>
