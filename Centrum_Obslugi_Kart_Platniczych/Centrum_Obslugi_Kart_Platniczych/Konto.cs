@@ -7,17 +7,20 @@ using System.Xml.Serialization;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    
+    [Serializable]
     class Konto : IKonto
     {
        
         public string nrKonta { get; }
+
+        public int licznikKart { get; protected set; } = 0;
 
         public List<IKarta> karty { get; protected set; } = new List<IKarta>();
 
         public bool dodajKarte(IKarta karta)
         {
             karty.Add(karta);
+            licznikKart++;
             return true;
         }
 

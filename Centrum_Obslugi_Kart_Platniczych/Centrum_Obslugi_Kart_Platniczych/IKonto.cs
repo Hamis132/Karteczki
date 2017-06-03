@@ -14,6 +14,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         List<IKarta> karty { get; }
 
+        int licznikKart { get; }
+
         bool dodajKarte(IKarta karta);
 
         bool wplac(decimal kwota);

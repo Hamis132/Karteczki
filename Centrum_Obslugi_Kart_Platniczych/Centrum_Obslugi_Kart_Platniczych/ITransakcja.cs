@@ -14,7 +14,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool udana { get; }
 
-        string nrKonta { get; }
+        string nrKarty { get; }
 
     }
 }

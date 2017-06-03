@@ -10,9 +10,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         List<IKonto> konta { get; }
 
+        List<IKonto> getKonta();
+
         bool dodajKonto(IKonto konto);
 
-        List<IKonto> getKonta();
+        IKonto znajdzKonto(string nrKonta);
 
     }
 

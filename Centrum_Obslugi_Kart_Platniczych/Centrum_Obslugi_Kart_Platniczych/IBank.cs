@@ -10,10 +10,24 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         List<IKlient> klienci { get; }
 
+        string nazwa { get; }
+
+        int nr { get; }
+
         bool dodajKlienta(IKlient klient);
+
+        IKonto znajdzKonto(string nrKonta);
+
+        string stworzKonto(string PESEL);
+
+        string stworzKarte(string nrKonta, int PIN);
+
+       // string getNrKontaByNrKarty(string nrKarty);
+
+        IKlient znajdzKlienta(string Pesel);
 
         List<IKlient> getKlienci();
 
-        bool autoryzacja(IKarta karta, int PIN, decimal kwota);
+        bool autoryzacja(string nrKarty, int PIN, decimal kwota);
     }
 }
