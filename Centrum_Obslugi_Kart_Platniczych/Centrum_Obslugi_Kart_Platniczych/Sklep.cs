@@ -8,6 +8,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     class Sklep : Firma
     {
+        public Sklep(ICentrum centrum) : base(centrum)
+        {
 
+        }
     }
 }

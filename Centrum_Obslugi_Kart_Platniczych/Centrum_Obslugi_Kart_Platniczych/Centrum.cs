@@ -11,11 +11,60 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         public static List<IBank> banki { get; protected set; } = new List<IBank>();
 
-        public Historia historia { get; protected set; } = new Historia();
+        public Historia historia { get; protected set; }
+
+        public List<IFirma> firmy { get; protected set; } = new List<IFirma>();
+
+        public Centrum()
+        {
+            historia = new Historia();
+        }
+        
+        public bool dodajHistorie(Historia historia)
+        {
+            this.historia = historia;
+            return true;
+        }
 
         public List<IBank> getBanki()
         {
             return banki;
+        }
+
+        public bool dodajBanki(List<IBank> bank)
+        {
+            foreach(IBank _bank in bank)
+            {
+                if(!czyIstnieje(_bank))
+                {
+                    banki.Add(_bank);
+                }
+            }
+            return true;
+        }
+
+        public IBank znajdzBank(string nazwa)
+        {
+            foreach(IBank bank in banki)
+            {
+                if(bank.nazwa == nazwa)
+                {
+                    return bank;
+                }
+            }
+            throw new Exception("Nie ma takiego banku!");  //Do zmiany 
+        }
+
+        private bool czyIstnieje(IBank bank)
+        {
+            foreach(IBank _bank in banki)
+            {
+                if(bank == _bank)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool autoryzacja(string NrKarty, int PIN, decimal kwota)
@@ -32,6 +81,21 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             int index = Int32.Parse(NrKarty.Substring(0, 4));
             return index;
+        }
+
+        public bool dodajBank(IBank bank)
+        {
+            if(bank != null)
+            {
+                banki.Add(bank);
+                return true;
+            }
+            return false;           //Powinien byc wyjatek
+        }
+
+        public bool usunBank(string nazwa)
+        {
+            return banki.Remove(znajdzBank(nazwa)) ;
         }
     }
 }

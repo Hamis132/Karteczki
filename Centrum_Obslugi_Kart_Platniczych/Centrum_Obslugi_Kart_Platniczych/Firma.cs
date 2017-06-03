@@ -10,6 +10,18 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         public ICentrum centrum { get; protected set; }
 
+        public string nazwa { get; protected set; }
+
+        public string KRS { get; protected set; }
+
+        public Firma(ICentrum centrum,string nazwa,string KRS)
+        {
+            this.centrum = centrum;
+            this.centrum.firmy.Add(this);
+            this.nazwa = nazwa;
+            this.KRS = KRS;
+        }
+
         public bool autorisationRequest(string NrKarty, int PIN, decimal kwota)
         {
             return centrum.autoryzacja(NrKarty, PIN, kwota);

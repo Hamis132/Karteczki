@@ -18,16 +18,22 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         IKonto znajdzKonto(string nrKonta);
 
+        string stworzKontoFirmy(string KRS);
+
+        IFirma znajdzFirme(string KRS);
+
+        IKlient znajdzKlientaByNrKonta(string nrKonta);
+
         string stworzKonto(string PESEL);
 
         string stworzKarte(string nrKonta, int PIN);
-
-       // string getNrKontaByNrKarty(string nrKarty);
 
         IKlient znajdzKlienta(string Pesel);
 
         List<IKlient> getKlienci();
 
         bool autoryzacja(string nrKarty, int PIN, decimal kwota);
+
+        bool usunKonto(string nrKonta);
     }
 }

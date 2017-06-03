@@ -95,6 +95,28 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return nrKonta;
         }  //Metoda tworzy konto w tym banku i przydziela nr Konta
 
+        public string stworzKontoFirmy(string KRS)
+        {
+            var firma = znajdzFirme(KRS);
+            string nrKonta = this.stworzNrKonta();
+            IKonto konto = new Konto(nrKonta);
+            firma.dodajKonto(konto);
+            licznikKont++;
+            return nrKonta;
+        }
+
+        public IFirma znajdzFirme(string KRS)
+        {
+            foreach(IFirma firma in klienci)
+            {
+                if(firma.KRS == KRS)
+                {
+                    return firma;
+                }
+            }
+            throw new Exception("Nie ma takiej firmy");
+        }
+
         private string stworzNrKonta()          //zakładamy ze nrKonta bedzie zawsze 12 cyfrowy
         {
                 
@@ -193,5 +215,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return nrKarty;
         }
 
+        public bool usunKonto(string nrKonta)
+        {
+            return znajdzKlientaByNrKonta(nrKonta).konta.Remove(znajdzKonto(nrKonta));
+        }
     }
 }

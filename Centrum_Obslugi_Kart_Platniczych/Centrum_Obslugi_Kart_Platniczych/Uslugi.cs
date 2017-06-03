@@ -8,5 +8,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     class Uslugi : Firma
     {
+        public Uslugi(ICentrum centrum) : base(centrum)
+        {
+
+        }
     }
 }

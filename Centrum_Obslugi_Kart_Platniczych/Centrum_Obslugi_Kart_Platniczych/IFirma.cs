@@ -10,6 +10,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         ICentrum centrum { get; }
 
+        string nazwa { get; }
+
+        string KRS { get; }
+
         bool autorisationRequest(string NrKarty, int PIN, decimal kwota);
 
     }
