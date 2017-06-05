@@ -55,7 +55,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     return bank;
                 }
             }
-            throw new Exception("Nie ma takiego banku!");  //Do zmiany 
+            throw new BankException("Nie ma takiego banku!");
         }
 
         private bool czyIstnieje(IBank bank)
@@ -72,13 +72,16 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool autoryzacja(string NrKarty, int PIN, decimal kwota, string nrKonta)
         {
-            int index = getIndexBanku(NrKarty);
-            IBank bankKlienta = banki[index];
-            IBank bankFirmy = banki[getIndexBankuFirmy(nrKonta)];
-            bool czyUdana= bankKlienta.autoryzacja(NrKarty, PIN, kwota, nrKonta, bankFirmy);
-            ITransakcja transakcja = new Transakcja(kwota, czyUdana, NrKarty);
-            historia.addTransakcja(transakcja);
-            return czyUdana;
+            
+                int index = getIndexBanku(NrKarty);
+                IBank bankKlienta = banki[index];
+                IBank bankFirmy = banki[getIndexBankuFirmy(nrKonta)];
+                bool czyUdana = bankKlienta.autoryzacja(NrKarty, PIN, kwota, nrKonta, bankFirmy);
+                ITransakcja transakcja = new Transakcja(kwota, czyUdana, NrKarty);
+                historia.addTransakcja(transakcja);
+                return czyUdana;
+           
+
         }
 
         private int getIndexBanku(string NrKarty)

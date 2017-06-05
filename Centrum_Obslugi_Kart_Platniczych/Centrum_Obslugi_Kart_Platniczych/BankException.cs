@@ -14,5 +14,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
         }
         
         public BankException() { }
+        public override string ToString()
+        {
+            return Message;
+        }
     }
 }

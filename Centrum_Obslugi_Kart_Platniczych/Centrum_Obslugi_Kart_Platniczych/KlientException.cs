@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class ZleKontoException : BankException
+    class KlientException : Exception
     {
-        private string nrKonta;
+        public KlientException(string msg) : base (msg)
+        {
 
-        public ZleKontoException(string msg, string nrKonta) : base(msg) { this.nrKonta = nrKonta; }
-
+        }
         public override string ToString()
         {
-            return this.Message + " " + nrKonta;
+            return Message;
         }
     }
 }

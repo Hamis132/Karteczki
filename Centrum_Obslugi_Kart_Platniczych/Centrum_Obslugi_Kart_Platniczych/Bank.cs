@@ -100,24 +100,35 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public string stworzKontoFirmy(string KRS)
         {
-            var firma = znajdzFirme(KRS);
-            string nrKonta = this.stworzNrKonta();
-            IKonto konto = new Konto(nrKonta);
-            firma.dodajKonto(konto);
-            licznikKont++;
-            return nrKonta;
+            try
+            {
+                var firma = znajdzFirme(KRS);
+                string nrKonta = this.stworzNrKonta();
+                IKonto konto = new Konto(nrKonta);
+                firma.dodajKonto(konto);
+                licznikKont++;
+                return nrKonta;
+            }
+            catch(FirmaException ex)
+            {
+                throw ex;
+            }
         }
 
         public IFirma znajdzFirme(string KRS)
         {
-            foreach(IKlient firma in klienci)
-            {
-                if(((IFirma)firma).KRS == KRS)
+           
+                foreach (IKlient firma in klienci)
                 {
-                    return (IFirma)firma;
+                    if (((IFirma)firma).KRS == KRS)
+                    {
+                        return (IFirma)firma;
+                    }
                 }
-            }
-            throw new Exception("Nie ma takiej firmy");
+            throw new FirmaException("nie ma takiej firmy");
+            
+            
+            
         }
 
         public IKarta znajdzKarte(string nrKarty)
@@ -139,7 +150,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     }
                 }
             }
-            return null;                //Wyjątek brak takiej karty w bazie
+            throw new KartaException("Brak karty w bazie");
+                            //Wyjątek brak takiej karty w bazie
         }
 
         public IKonto znajdzKontoByNrKarty(string nrKarty)
@@ -158,7 +170,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     }
                 }
             }
-            return null;                //Wyjatek ten nr karty nie pasuje do zadnego konta w tym Banku
+            throw new KontoException("nie ma takiego konta");               //Wyjatek ten nr karty nie pasuje do zadnego konta w tym Banku
         }
 
         private string stworzNrKonta()          //zakładamy ze nrKonta bedzie zawsze 12 cyfrowy
@@ -204,7 +216,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 }
             }
 
-            throw new Exception("Nie ma takiego klienta w banku");  //do zmiany oczywiscie
+            throw new KlientException("Nie ma takiego klienta w banku");  //do zmiany oczywiscie
         }
 
         public IKonto znajdzKonto(string nrKonta)
@@ -216,7 +228,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     if(nrKonta == konto.nrKonta) { return konto; }
                 }
             }
-            throw new Exception("Nie ma takiego konta");
+            throw new KontoException("Nie ma takiego Konta");
         }
 
         public IKlient znajdzKlientaByNrKonta(string nrKonta)
@@ -231,15 +243,33 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     }
                 }
             }
-            throw new Exception("Nie ma takiego klienta w tym banku");
+            throw new KlientException("Nie ma takiego klienta w tym banku");
         }
 
         public string stworzKarte(string nrKonta, int PIN)
         {
-            IKlient klient = znajdzKlientaByNrKonta(nrKonta);
-            IKarta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
-            this.znajdzKonto(nrKonta).dodajKarte(karta);
-            return karta.NrKarty;
+            try
+            {
+
+
+                IKlient klient = znajdzKlientaByNrKonta(nrKonta);
+                IKarta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
+                this.znajdzKonto(nrKonta).dodajKarte(karta);
+                return karta.NrKarty;
+            }
+            catch(KlientException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch(KontoException ex1)
+            {
+                Console.WriteLine(ex1);
+            }
+            catch(Exception ex2)
+            {
+                Console.WriteLine(ex2);
+            }
+            return null;
         }       
 
                                                            //    NP.    0001 0000 0002 0005
@@ -270,7 +300,19 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool usunKonto(string nrKonta)
         {
-            return znajdzKlientaByNrKonta(nrKonta).konta.Remove(znajdzKonto(nrKonta));
+            try
+            {
+                return znajdzKlientaByNrKonta(nrKonta).konta.Remove(znajdzKonto(nrKonta));
+            }
+            catch(KlientException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch(KontoException ex1)
+            {
+                Console.WriteLine(ex1);
+            }
+            return false;
         }
     }
 }
