@@ -14,6 +14,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         int nr { get; }
 
+        void setNr(int nr);
+
         bool dodajKlienta(IKlient klient);
 
         IKonto znajdzKonto(string nrKonta);

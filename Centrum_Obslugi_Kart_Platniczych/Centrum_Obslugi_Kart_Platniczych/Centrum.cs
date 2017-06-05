@@ -33,11 +33,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool dodajBanki(List<IBank> bank)
         {
+            int nr = 0;
             foreach(IBank _bank in bank)
             {
                 if(!czyIstnieje(_bank))
                 {
+                    _bank.setNr(nr);
                     banki.Add(_bank);
+                    nr++;
                 }
             }
             return true;

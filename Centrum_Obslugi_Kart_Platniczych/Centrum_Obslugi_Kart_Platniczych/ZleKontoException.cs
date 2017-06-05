@@ -11,5 +11,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
         private string nrKonta;
 
         public ZleKontoException(string msg, string nrKonta) : base(msg) { this.nrKonta = nrKonta; }
+
+        public override string ToString()
+        {
+            return this.Message + " " + nrKonta;
+        }
     }
 }

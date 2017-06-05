@@ -21,9 +21,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool dodajBank(IBank bank);
 
-        bool usunBank(string nazwa);
-
         bool dodajHistorie(Historia historia);
+
+        bool usunBank(string nazwa);
 
         List<IBank> getBanki();
 

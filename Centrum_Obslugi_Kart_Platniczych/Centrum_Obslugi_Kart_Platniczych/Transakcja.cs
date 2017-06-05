@@ -30,7 +30,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public override string ToString()
         {
-            return "Nr konta: " + nrKarty + " kwota: " + kwota + " udana: " + udana + " Data: " + data;
+            return "Nr karty: " + nrKarty + " kwota: " + kwota + " udana: " + udana + " Data: " + data;
         }
     }
 }

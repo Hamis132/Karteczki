@@ -28,7 +28,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return true;
         }
 
-        public bool TestOdczytu(ICentrum centrum)
+        public bool OdczytajDane(ICentrum centrum)
         {
             BinaryFormatter formatter = new BinaryFormatter();
 

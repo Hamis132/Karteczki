@@ -16,7 +16,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public string nazwa { get; protected set; }
 
-        public int nr { get; protected set; } = 0;
+        public int nr { get; protected set; } = 0;                  //nr banku
 
         public static int licznikBankow { get; protected set; } = 0;      //licznik bankow
 
@@ -32,6 +32,12 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 licznikKont = 0;
                 Centrum.banki.Add(this);
             }
+        }
+
+        public void setNr(int nr)
+        {
+            this.nr = nr;
+            licznikBankow = nr;
         }
             
         public bool autoryzacja(string nrKarty, int PIN, decimal kwota, string nrKonta, IBank bankFirmy)
@@ -57,7 +63,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 }
                 return false;               
             }
-            return false;   //wyjatek nie poprawny pin
+            return false;   
             
         }
 
