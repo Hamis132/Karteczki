@@ -10,7 +10,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         static void Main(string[] args)
         {
-            ICentrum centrum = new Centrum();
+             ICentrum centrum = new Centrum();
              var test = new Test(centrum);
              Console.WriteLine("TESTY:");
              Console.WriteLine(test.Test1());

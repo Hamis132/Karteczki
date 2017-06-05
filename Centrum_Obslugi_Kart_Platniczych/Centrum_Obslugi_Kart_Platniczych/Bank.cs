@@ -40,6 +40,15 @@ namespace Centrum_Obslugi_Kart_Platniczych
             IKonto konto = znajdzKontoByNrKarty(nrKarty);
             if(PIN == ((Karta)karta).PIN)
             {
+                if(karta is KartaKredytowa)
+                {
+                    if(decyzjaTransakcji() && ((KartaKredytowa)karta).saldo - kwota >=0)
+                    {
+                        ((KartaKredytowa)karta).wyplac(kwota);
+                        bankFirmy.znajdzKonto(nrKonta).wplac(kwota);
+                        return true;
+                    }
+                }
                 if(decyzjaTransakcji() && konto.saldo - kwota >= 0)
                 {
                     konto.wyplac(kwota);
