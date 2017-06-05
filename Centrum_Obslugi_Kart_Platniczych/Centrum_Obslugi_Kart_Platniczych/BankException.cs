@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class Uslugi : Firma
+    class BankException : Exception
     {
-        public Uslugi(ICentrum centrum, string nazwa, string KRS) : base(centrum,nazwa,KRS)
+        public BankException(string msg) : base(msg)
         {
 
         }
+        
+        public BankException() { }
     }
 }

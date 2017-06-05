@@ -32,7 +32,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         List<IKlient> getKlienci();
 
-        bool autoryzacja(string nrKarty, int PIN, decimal kwota);
+        bool autoryzacja(string nrKarty, int PIN, decimal kwota, string NrKonta, IBank bankFirmy);
 
         bool usunKonto(string nrKonta);
     }

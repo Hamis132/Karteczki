@@ -14,7 +14,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         string KRS { get; }
 
-        bool autorisationRequest(string NrKarty, int PIN, decimal kwota);
+        bool autorisationRequest(string NrKarty, int PIN, decimal kwota, string nrKonta);
 
     }
 }

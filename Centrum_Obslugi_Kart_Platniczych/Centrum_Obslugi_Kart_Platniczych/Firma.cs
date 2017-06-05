@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
+    [Serializable]
    abstract class Firma : Klient, IFirma
     {
         public ICentrum centrum { get; protected set; }
@@ -14,7 +17,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public string KRS { get; protected set; }
 
-        public Firma(ICentrum centrum,string nazwa,string KRS)
+        public Firma(ICentrum centrum, string nazwa, string KRS)
         {
             this.centrum = centrum;
             this.centrum.firmy.Add(this);
@@ -22,9 +25,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
             this.KRS = KRS;
         }
 
-        public bool autorisationRequest(string NrKarty, int PIN, decimal kwota)
+        public bool autorisationRequest(string NrKarty, int PIN, decimal kwota, string nrKonta)
         {
-            return centrum.autoryzacja(NrKarty, PIN, kwota);
+            return centrum.autoryzacja(NrKarty, PIN, kwota, nrKonta);
         }
     }
 }

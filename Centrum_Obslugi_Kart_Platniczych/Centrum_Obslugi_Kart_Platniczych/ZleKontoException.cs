@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Centrum_Obslugi_Kart_Platniczych
 {
-    class Uslugi : Firma
+    class ZleKontoException : BankException
     {
-        public Uslugi(ICentrum centrum, string nazwa, string KRS) : base(centrum,nazwa,KRS)
-        {
+        private string nrKonta;
 
-        }
+        public ZleKontoException(string msg, string nrKonta) : base(msg) { this.nrKonta = nrKonta; }
     }
 }

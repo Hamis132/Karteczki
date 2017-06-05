@@ -8,7 +8,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 {
     class Transport : Firma
     { 
-        public Transport(ICentrum centrum) : base(centrum)
+        public Transport(ICentrum centrum, string nazwa, string KRS) : base(centrum, nazwa,KRS)
         {
 
         }

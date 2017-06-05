@@ -12,7 +12,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
     [Serializable]
     class Transakcja : ITransakcja
     {
-        public DateTime data { get; protected set; } = new DateTime();
+        public DateTime data { get; protected set; }
 
         public decimal kwota { get; protected set; }
 
@@ -25,6 +25,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             this.kwota = kwota;
             this.udana = udana;
             this.nrKarty = nrKarty;
+            data = DateTime.Now;
         }
 
         public override string ToString()

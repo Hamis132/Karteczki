@@ -14,7 +14,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         public string NrKarty { get; }
         public int PIN { get; protected set; }
-        public DateTime DataWaznosci { get; } 
+        public DateTime DataWaznosci { get; } = DateTime.Now;
         public string Imie { get; }
         public string Nazwisko { get; }
         public Karta(string Imie, string Nazwisko, int PIN, string NrKarty)

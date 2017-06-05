@@ -13,7 +13,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         List<IFirma> firmy { get; }
 
-        bool autoryzacja(string NrKarty, int PIN, decimal kwota);
+        bool autoryzacja(string NrKarty, int PIN, decimal kwota, string nrKonta);
 
         IBank znajdzBank(string nazwa);
 

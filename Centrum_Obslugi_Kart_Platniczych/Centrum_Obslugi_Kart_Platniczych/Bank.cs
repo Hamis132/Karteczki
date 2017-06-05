@@ -34,34 +34,22 @@ namespace Centrum_Obslugi_Kart_Platniczych
             }
         }
             
-        public bool autoryzacja(string nrKarty, int PIN, decimal kwota)
+        public bool autoryzacja(string nrKarty, int PIN, decimal kwota, string nrKonta, IBank bankFirmy)
         {
-            foreach(IKlient klient in klienci)
+            IKarta karta = znajdzKarte(nrKarty);
+            IKonto konto = znajdzKontoByNrKarty(nrKarty);
+            if(PIN == ((Karta)karta).PIN)
             {
-                foreach(IKonto konto in klient.konta)
+                if(decyzjaTransakcji() && konto.saldo - kwota >= 0)
                 {
-                    foreach(IKarta karteczka in konto.karty )
-                    {
-                        if( karteczka.NrKarty == nrKarty  && PIN == ((Karta)karteczka).PIN)
-                        {
-                            if (konto.saldo - kwota < 0)
-                            {
-                                return false;   //Tu bedzie wyjatek zła kwota
-                            }
-                            else
-                            {
-                                if(this.decyzjaTransakcji())
-                                {
-                                    konto.wyplac(kwota);
-                                    return true;
-                                }
-                                return false;
-                            }
-                        }
-                    }
+                    konto.wyplac(kwota);
+                    bankFirmy.znajdzKonto(nrKonta).wplac(kwota);
+                    return true;
                 }
+                return false;               
             }
-            return false;       //Tu bedzie wyjatek brak konta
+            return false;   //wyjatek nie poprawny pin
+            
         }
 
         private bool decyzjaTransakcji()
@@ -107,14 +95,55 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public IFirma znajdzFirme(string KRS)
         {
-            foreach(IFirma firma in klienci)
+            foreach(IKlient firma in klienci)
             {
-                if(firma.KRS == KRS)
+                if(((IFirma)firma).KRS == KRS)
                 {
-                    return firma;
+                    return (IFirma)firma;
                 }
             }
             throw new Exception("Nie ma takiej firmy");
+        }
+
+        public IKarta znajdzKarte(string nrKarty)
+        {
+            foreach (IKlient klient in klienci)
+            {
+                if (klient is Osoba)
+                {
+                    foreach (IKonto konto in klient.konta)
+                    {
+                        foreach (IKarta karteczka in konto.karty)
+                        {
+                            if (karteczka.NrKarty == nrKarty)
+                            {
+                                return karteczka;
+                            }
+
+                        }
+                    }
+                }
+            }
+            return null;                //Wyjątek brak takiej karty w bazie
+        }
+
+        public IKonto znajdzKontoByNrKarty(string nrKarty)
+        {
+            foreach (IKlient klient in klienci)
+            {
+                foreach (IKonto konto in klient.konta)
+                {
+                    foreach (IKarta karteczka in konto.karty)
+                    {
+                        if (karteczka.NrKarty == nrKarty)
+                        {
+                            return konto;
+                        }
+
+                    }
+                }
+            }
+            return null;                //Wyjatek ten nr karty nie pasuje do zadnego konta w tym Banku
         }
 
         private string stworzNrKonta()          //zakładamy ze nrKonta bedzie zawsze 12 cyfrowy
@@ -139,13 +168,24 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return klienci;
         }
 
-        public IKlient znajdzKlienta(string Pesel)   //Szuka klienta po peselu
+        public IKlient znajdzKlienta(string identyfikator)   //Szuka klienta po identyfikatorze
         {
+            
             foreach(IKlient customer in klienci)
             {
-                if(Pesel == ((Osoba)customer).PESEL)
+                if(customer is IFirma)
                 {
-                    return customer;
+                    if(identyfikator == ((IFirma)customer).KRS)
+                    {
+                        return customer;
+                    }
+                }
+                else
+                {
+                    if(identyfikator == ((Osoba)customer).PESEL)
+                    {
+                        return customer;
+                    }
                 }
             }
 
@@ -185,9 +225,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             IKarta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
             this.znajdzKonto(nrKonta).dodajKarte(karta);
             return karta.NrKarty;
-        }
-
-        
+        }       
 
                                                            //    NP.    0001 0000 0002 0005
         private string stworzNrKarty(string nrKonta)      // Postac nrKarty:    NrBanku-4 cyfry NrKonta-8 cyfr, LicznikKart - 4cyfry
@@ -199,7 +237,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 nrKarty += "0";
             }
             nrKarty += nr;
-            int konto = Int32.Parse(nrKonta.Substring(7, 4));
+            int konto = Int32.Parse(nrKonta.Substring(nrKonta.Length-4, 4));
             while ((nrKarty + konto).Length != 12)
             {
                 nrKarty += "0";

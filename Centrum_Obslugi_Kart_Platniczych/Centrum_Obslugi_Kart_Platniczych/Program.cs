@@ -10,20 +10,23 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         static void Main(string[] args)
         {
-            var test = new Test();
-            Console.WriteLine("TESTY:");
-            Console.WriteLine(test.Test1());
-            Console.WriteLine(test.Test2());
-            Console.WriteLine(test.Test3());
-            Console.WriteLine(test.Test4());
-            Console.WriteLine(test.Test5());
-            Console.WriteLine(test.Test6());
-            Console.WriteLine(test.Test7());
-            Console.WriteLine(test.Test8());
-            Console.WriteLine(test.Test9());
-            Console.WriteLine(test.testZapis());
-            Console.WriteLine(test.TestOdczytu());
-            //test.wypiszWszystko();
+            ICentrum centrum = new Centrum();
+             var test = new Test(centrum);
+             Console.WriteLine("TESTY:");
+             Console.WriteLine(test.Test1());
+             Console.WriteLine(test.Test2());
+             Console.WriteLine(test.Test3());
+             Console.WriteLine(test.Test4());
+             Console.WriteLine(test.Test5());
+             Console.WriteLine(test.Test6());
+             Console.WriteLine(test.Test7());
+             Console.WriteLine(test.Test8());
+             Console.WriteLine(test.Test9());
+             Console.WriteLine(test.testZapis());
+             Console.WriteLine(test.TestOdczytu());
+             //test.wypiszWszystko();
+       
+            Console.WriteLine();
             Console.ReadKey();
         
         }

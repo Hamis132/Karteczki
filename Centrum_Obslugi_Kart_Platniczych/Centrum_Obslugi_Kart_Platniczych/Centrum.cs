@@ -67,11 +67,12 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return false;
         }
 
-        public bool autoryzacja(string NrKarty, int PIN, decimal kwota)
+        public bool autoryzacja(string NrKarty, int PIN, decimal kwota, string nrKonta)
         {
             int index = getIndexBanku(NrKarty);
-            IBank bank = banki[index];
-            bool czyUdana= bank.autoryzacja(NrKarty, PIN, kwota);
+            IBank bankKlienta = banki[index];
+            IBank bankFirmy = banki[getIndexBankuFirmy(nrKonta)];
+            bool czyUdana= bankKlienta.autoryzacja(NrKarty, PIN, kwota, nrKonta, bankFirmy);
             ITransakcja transakcja = new Transakcja(kwota, czyUdana, NrKarty);
             historia.addTransakcja(transakcja);
             return czyUdana;
@@ -83,9 +84,15 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return index;
         }
 
+        private int getIndexBankuFirmy(string nrKonta)
+        {
+            int index = Int32.Parse(nrKonta.Substring(0, 3));
+            return index;
+        }
+
         public bool dodajBank(IBank bank)
         {
-            if(bank != null)
+            if(czyIstnieje(bank))
             {
                 banki.Add(bank);
                 return true;

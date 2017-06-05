@@ -12,19 +12,32 @@ namespace Centrum_Obslugi_Kart_Platniczych
     [Serializable]
     class Test
     {
-        ICentrum centrum = new Centrum();
+        ICentrum centrum;
+        IFirma PSS;
         IBank bank1 = new Bank("PKO");
         IBank bank2 = new Bank("Millenium");
+        
         Osoba osoba1 = new Osoba("Paweł", "Cos", "124");
         Osoba osoba2 = new Osoba("Paweł", "Cos", "125");
         Osoba osoba3 = new Osoba("Paweł", "Cos", "126");
         Osoba osoba4 = new Osoba("Paweł", "Cos", "127");
+        public string nrSklep; 
+
+        public Test(ICentrum centrum)
+        {
+            this.centrum = centrum;
+            PSS = new Sklep(centrum, "PSS", "XD");
+            bank1.dodajKlienta((IKlient)PSS);
+            nrSklep = bank1.stworzKontoFirmy("XD");
+        }
+
         public bool Test1()
         { 
             bank1.dodajKlienta(osoba1);
             bank2.dodajKlienta(osoba2);
             bank1.dodajKlienta(osoba3);
             bank2.dodajKlienta(osoba4);
+            
             return true;
         }
 
@@ -33,7 +46,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             bank1.stworzKonto(osoba1.PESEL);
             bank2.stworzKonto(osoba2.PESEL);
             bank1.stworzKonto(osoba3.PESEL);
-            bank2.stworzKonto(osoba4.PESEL);
+            Console.WriteLine(bank2.stworzKonto(osoba4.PESEL));
             return true;
         }
 
@@ -45,13 +58,13 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool Test4()
         {
-            bank2.stworzKarte("001000000001", 1234);
+            Console.WriteLine(bank2.stworzKarte("001000000001", 1234));
             return true;
         }
 
         public bool Test5()
         {
-            if(!centrum.autoryzacja("0001000000010000", 1234, 12.2M))
+            if(!centrum.autoryzacja("0001000000010000", 1234, 12.2M, nrSklep))
             {
                 return true;
             }
@@ -70,7 +83,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool Test7()
         {
-            if(centrum.autoryzacja("0001000000000000", 6452, 5.50M))
+            if(centrum.autoryzacja("0001000000000000", 6452, 5.50M, nrSklep))
             {
                 return true;
             }
