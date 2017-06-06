@@ -14,6 +14,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool dodajKonto(IKonto konto);
 
+        void wypiszKonta();
+
         IKonto znajdzKonto(string nrKonta);
 
     }

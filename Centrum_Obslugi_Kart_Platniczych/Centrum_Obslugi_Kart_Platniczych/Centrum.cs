@@ -93,6 +93,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                     return bank;
                 }
             }
+
             throw new BankException("Nie ma takiego banku!");
         }
 

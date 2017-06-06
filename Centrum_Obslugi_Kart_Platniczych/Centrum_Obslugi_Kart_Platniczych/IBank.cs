@@ -24,6 +24,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         IFirma znajdzFirme(string KRS);
 
+        void wypiszKlientow();
+
         IKlient znajdzKlientaByNrKonta(string nrKonta);
 
         string stworzKonto(string PESEL);

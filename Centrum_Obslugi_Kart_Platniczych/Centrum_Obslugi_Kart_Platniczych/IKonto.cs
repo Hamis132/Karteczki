@@ -16,6 +16,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         int licznikKart { get; }
 
+        decimal getSaldo();
+
         bool dodajKarte(IKarta karta);
 
         bool wplac(decimal kwota);

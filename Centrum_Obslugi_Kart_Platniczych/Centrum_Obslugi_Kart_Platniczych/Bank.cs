@@ -21,7 +21,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
         public static int licznikBankow { get; protected set; } = 0;      //licznik bankow
 
         public int licznikKont { get; protected set; } = 0;
-
+        
         public Bank(string nazwa)
         {
             if(nazwa != null)
@@ -31,6 +31,21 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 licznikBankow++;
                 licznikKont = 0;
                 Centrum.banki.Add(this);
+            }
+        }
+
+        public void wypiszKlientow()
+        {
+            foreach(IKlient klient in klienci)
+            {
+                if(klient is IFirma)
+                {
+                    Console.WriteLine(((IFirma)klient).ToString());
+                }
+                else
+                {
+                    Console.WriteLine(((Osoba)klient).ToString());
+                }
             }
         }
 
@@ -118,12 +133,17 @@ namespace Centrum_Obslugi_Kart_Platniczych
         public IFirma znajdzFirme(string KRS)
         {
            
+            
                 foreach (IKlient firma in klienci)
+                {
+                if (firma is IFirma)
                 {
                     if (((IFirma)firma).KRS == KRS)
                     {
                         return (IFirma)firma;
                     }
+                }
+
                 }
             throw new FirmaException("nie ma takiej firmy");
             

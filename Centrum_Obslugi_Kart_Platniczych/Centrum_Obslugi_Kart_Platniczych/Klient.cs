@@ -29,6 +29,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return konta;
         }
 
+        public void wypiszKonta()
+        {
+            foreach(IKonto konto in konta)
+            {
+                Console.WriteLine(konto.nrKonta);
+            }
+        }
+
         public IKonto znajdzKonto(string nrKonta)
         {
             foreach(IKonto konto in konta)

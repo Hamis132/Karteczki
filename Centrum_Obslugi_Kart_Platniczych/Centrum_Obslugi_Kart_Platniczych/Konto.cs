@@ -24,6 +24,12 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return true;
         }
 
+        public decimal getSaldo()
+        {
+            return saldo;
+                
+        }
+
         public decimal saldo { get; set; } = 0.00M;
 
         public Konto() { }

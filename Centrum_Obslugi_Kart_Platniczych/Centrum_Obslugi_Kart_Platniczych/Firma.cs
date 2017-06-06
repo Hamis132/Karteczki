@@ -29,5 +29,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             return centrum.autoryzacja(NrKarty, PIN, kwota, nrKonta);
         }
+
+        public override string ToString()
+        {
+            return nazwa + " " + KRS;
+        }
     }
 }
