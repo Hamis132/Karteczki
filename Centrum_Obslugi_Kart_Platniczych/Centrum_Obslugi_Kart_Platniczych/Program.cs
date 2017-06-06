@@ -50,6 +50,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                         }
                     case 1:
                         {
+                            Console.Clear();
                             Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - Opcje Firmy" + Environment.NewLine + "2 - Opcje banku");
                             int j = int.Parse(Console.ReadLine());
                             switch (j)
@@ -60,6 +61,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                     }
                                 case 1:
                                     {
+                                        Console.Clear();
                                         Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - Dodaj firme" + Environment.NewLine + "2 - Usun firme" + Environment.NewLine + "3 - Przeglad frim");
                                         int l = int.Parse(Console.ReadLine());
                                         switch (l)
@@ -69,6 +71,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                     int exit2 = 0;
                                                     while (exit2 == 0)
                                                     {
+                                                        Console.Clear();
                                                         Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - dodaj Sklep" + Environment.NewLine + "2 - dodaj Transport" + Environment.NewLine
                                                             + "3 - Uslugi" + Environment.NewLine);
                                                         int k = int.Parse(Console.ReadLine());
@@ -113,10 +116,12 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                                 }
                                                         }
                                                     }
+                                                    Console.Clear();
                                                     break;
                                                 }
                                             case 2:
                                                 {
+                                                    Console.Clear();
                                                     Console.WriteLine("Podaj KRS firmy ktora chcesz usunac");
                                                     string KRS = Console.ReadLine();
                                                     centrum.usunFirme(KRS);
@@ -127,6 +132,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                 }
                                             case 3:
                                                 {
+                                                    Console.Clear();
                                                     foreach (Firma firma in centrum.getFirmy()) 
                                                     {
                                                         Console.WriteLine(firma.nazwa + "," + firma.KRS);
@@ -142,6 +148,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                         int exit1 = 0;
                                         while (exit1 == 0)
                                         {
+                                            Console.Clear();
                                             Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - dodaj bank" + Environment.NewLine + "2 - Stworz klienta fizycznego" + Environment.NewLine + "3 - stworz konto" + Environment.NewLine
                                                 + "4 - stworz karte" + Environment.NewLine + "5 - usun bank" + Environment.NewLine + "6 - przeglad bankow" + Environment.NewLine);
                                             int k = int.Parse(Console.ReadLine());
@@ -197,8 +204,23 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                         if (wybor == 1)
                                                         {
                                                             string nazwa_banku = Console.ReadLine();
-                                                            // string nrKonta = centrum.znajdzBank(nazwa_banku) // tutaj
-                                                            // centrum.znajdzBank(nazwa_banku).stworzKarte();
+                                                            string nrKonta = Console.ReadLine();
+                                                            int PIN =Int32.Parse(Console.ReadLine());
+                                                            centrum.znajdzBank(nazwa_banku).stworzKarteBankomatowa(nrKonta, PIN);
+                                                        }
+                                                        else if(wybor == 2)
+                                                        {
+                                                            string nazwa_banku = Console.ReadLine();
+                                                            string nrKonta = Console.ReadLine();
+                                                            int PIN = Int32.Parse(Console.ReadLine());
+                                                            centrum.znajdzBank(nazwa_banku).stworzKarteBankomatowa(nrKonta, PIN);
+                                                        }
+                                                        else if(wybor == 3)
+                                                        {
+                                                            string nazwa_banku = Console.ReadLine();
+                                                            string nrKonta = Console.ReadLine();
+                                                            int PIN = Int32.Parse(Console.ReadLine());
+                                                            centrum.znajdzBank(nazwa_banku).stworzKarteKredytowa(nrKonta, PIN);
                                                         }
                                                         break;
                                                     }
@@ -210,10 +232,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                     }
                                                 case 6:
                                                     {
-                                                        foreach (Bank bank in centrum.getBanki())
-                                                        {
-                                                            Console.WriteLine(bank.nazwa);
-                                                        }
+                                                        centrum.wyswietlBanki();
+                                                        Console.ReadKey();
                                                         break;
                                                     }
 
@@ -252,5 +272,6 @@ namespace Centrum_Obslugi_Kart_Platniczych
             }
         
         }
+       
     }
 }
