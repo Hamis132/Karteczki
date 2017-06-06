@@ -58,7 +58,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public bool Test4()
         {
-            Console.WriteLine(bank2.stworzKarte("001000000001", 1234));
+            Console.WriteLine(bank2.stworzKarteDebetowa("001000000001", 1234));
             return true;
         }
 
@@ -75,7 +75,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             if(bank2.znajdzKonto("001000000000").wplac(80.20M))
             {
-                bank2.stworzKarte("001000000000", 6452);
+                bank2.stworzKarteDebetowa("001000000000", 6452);
                 return true;
             }
             return false;

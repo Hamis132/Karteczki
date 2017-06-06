@@ -51,6 +51,31 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return true;
         }
 
+        public IFirma znajdzFirme(string KRS)
+        {
+            foreach(IFirma firma in firmy)
+            {
+                if(firma.KRS == KRS)
+                {
+                    return firma;
+                }
+            }
+            throw new Exception("Nie ma takiej Firmy");
+        }
+
+        public bool usunFirme(string KRS)
+        {
+            try
+            {
+                return firmy.Remove(znajdzFirme(KRS));
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public IBank znajdzBank(string nazwa)
         {
             foreach(IBank bank in banki)

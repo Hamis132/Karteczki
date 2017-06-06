@@ -72,5 +72,5 @@ namespace Centrum_Obslugi_Kart_Platniczych
             }
         }
     }
-    }
+    
 }

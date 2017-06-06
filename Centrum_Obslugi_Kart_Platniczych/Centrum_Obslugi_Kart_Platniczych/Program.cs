@@ -113,6 +113,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                 }
                                             case 2:
                                                 {
+                                                    Console.WriteLine("Podaj KRS firmy ktora chcesz usunac");
+                                                    string KRS = Console.ReadLine();
+                                                    centrum.usunFirme(KRS);
                                                     //tutaj wstawic usuwanie zobacz jak, bo nie wiem, to jest usuwanie Firm. 
                                                     //tak samo zobacz czy jak usuwasz bank to sie cały usuwa czy tylko z listy i czy tak ma być
                                                     //I też console.clear trzeba wsadzić jeszcze przy menu każdym

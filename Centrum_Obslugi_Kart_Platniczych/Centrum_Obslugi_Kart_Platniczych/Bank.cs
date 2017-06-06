@@ -246,12 +246,12 @@ namespace Centrum_Obslugi_Kart_Platniczych
             throw new KlientException("Nie ma takiego klienta w tym banku");
         }
 
-        public string stworzKarte(string nrKonta, int PIN)
+        public string stworzKarteKredytowa(string nrKonta, int PIN) 
         {
             try
             {
                 IKlient klient = znajdzKlientaByNrKonta(nrKonta);
-                IKarta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
+                Karta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
                 this.znajdzKonto(nrKonta).dodajKarte(karta);
                 return karta.NrKarty;
             }
@@ -268,9 +268,57 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 Console.WriteLine(ex2);
             }
             return null;
-        }       
+        }
 
-                                                           //    NP.    0001 0000 0002 0005
+        public string stworzKarteBankomatowa(string nrKonta, int PIN)
+        {
+            try
+            {
+                IKlient klient = znajdzKlientaByNrKonta(nrKonta);
+                Karta karta = new KartaBankomatowa(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
+                this.znajdzKonto(nrKonta).dodajKarte(karta);
+                return karta.NrKarty;
+            }
+            catch (KlientException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (KontoException ex1)
+            {
+                Console.WriteLine(ex1);
+            }
+            catch (Exception ex2)
+            {
+                Console.WriteLine(ex2);
+            }
+            return null;
+        }
+
+        public string stworzKarteDebetowa(string nrKonta, int PIN)
+        {
+            try
+            {
+                IKlient klient = znajdzKlientaByNrKonta(nrKonta);
+                Karta karta = new KartaDebetowa(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
+                this.znajdzKonto(nrKonta).dodajKarte(karta);
+                return karta.NrKarty;
+            }
+            catch (KlientException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (KontoException ex1)
+            {
+                Console.WriteLine(ex1);
+            }
+            catch (Exception ex2)
+            {
+                Console.WriteLine(ex2);
+            }
+            return null;
+        }
+
+        //    NP.    0001 0000 0002 0005
         private string stworzNrKarty(string nrKonta)      // Postac nrKarty:    NrBanku-4 cyfry NrKonta-8 cyfr, LicznikKart - 4cyfry
         {
             string nrKarty = "";

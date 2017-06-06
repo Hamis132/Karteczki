@@ -28,7 +28,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         string stworzKonto(string PESEL);
 
-        string stworzKarte(string nrKonta, int PIN);
+        string stworzKarteKredytowa(string nrKonta, int PIN);
+
+        string stworzKarteBankomatowa(string nrKonta, int PIN);
+
+        string stworzKarteDebetowa(string nrKonta, int PIN);
 
         IKlient znajdzKlienta(string Pesel);
 

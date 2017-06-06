@@ -25,6 +25,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool usunBank(string nazwa);
 
+        bool usunFirme(string KRS);
+
         List<IBank> getBanki();
 
         List<IFirma> getFirmy();
