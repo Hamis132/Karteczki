@@ -1,0 +1,89 @@
+Dokumentacja projektu "Wypozyczalnia"
+
+Wykona³:
+Pawe³ Halicki
+Nr. indeksu: 101304
+
+Aby uruchomic program nalezy najpierw otworzyc plik Wyporzyczalnia.cbp programem CodeBlocks, a nastepnie skompilowac go i uruchomic.
+
+Opis Programu:
+
+Program do obs³ugi wypo¿yczalni samochodów. Ka¿dy samochód jest opisany atrybutami: nr rejestracji, vin, model, marka, rocznik, przebieg.
+Ka¿dy klient jest opisany atrybutami: imie, nazwisko, pesel, adres, email, telefon kontaktowy. Program umo¿liwia 
+dodawanie/usuwanie/edycjê/wypisywanie/wyszukiwanie samochodów oraz klientów. Wypo¿yczenie samochodu zawiera 
+informacjê o kliencie, samochodzie, dacie wypo¿yczenia, planowanej dacie zwrotu, faktycznej dacie zwrotu, przebiegu pocz¹tkowym
+i koñcowym, opisie stanu pojazdu. Program powinien umo¿liwia dodawanie/usuwanie wypo¿yczeñ oraz
+wypisywanie historii wypo¿yczeñ danego pojazdu/klienta. Przy wyœwietlaniu listy samochodow mamy mozliwosc
+posortowania danych wed³ug wybranych pól.
+
+Pliki:
+
+Dane z list¹ samochodow s¹ przechowywane w pliku "Cars.bin".
+Dane z list¹ klientów s¹ przechowywane w pliku "Customers.bin".
+Dane z list¹ wypozyczen s¹ przechowywane w pliku "Rentals.bin".
+
+
+Program kozysta z trzech struktur:
+car - dane samochodu
+customers - dane klienta 
+rental - dane wypozyczenia
+Wszystkie dane sa przechowywane w listach jednokierunkowych podczas wykonywania programu.
+Program korzysta z sortowania typu "merge sort".
+
+Opis najwazniejszych algorytmów:
+
+void menu() - Menu g³ówne
+Funkcje wypozyczen:
+
+void list_rental_add(rental**,car**,customer**) - Dodawanie wyporzyczen do listy
+void list_frental_add(rental **) - Dodawanie wypozyczen z listy do pliku
+void list_rental_print(rental**,car**,customer**) - Wyswietlanie listy wypozyczen
+void list_frental_get(rental**) - Pobieranie listy wypozyczen z pliku Rentals.bin
+int  list_rental_counter(rental**) - Funkcja zwraca ilosc elementow listy
+void list_rental_counter_mod(rental**) - Modyfikuje numery wypozyczen
+void list_rental_reverse(rental**) - Odwraca liste wypozyczen
+void list_rental_move(rental**,int) - Funkcja przesuwa wskaznik listy na wybrany element
+void list_rental_delete(rental**) - Usuwanie listy wypozyczen
+void list_rental_edelete(rental**) - Usuwa wybrany przez uzytkownika element listy wypozyczen
+void list_rmove_all(rental**,car**,customer**,int) - Przesuwa wskazniki wszystkich list na wskazany przez parametr
+void list_car_history(car**,rental**) - Wypisuje historie wypozyczen danego samochodu
+void rental_menu(rental**,car**,customer**) - Menu wypozyczen
+
+Funkcje klientów:
+
+void list_fcustomer_add(customer**) - Dodawanie listy do pliku "Customers.bin"
+void list_customer_add(customer**,int) - Dodawanie do listy klientow
+void list_fcustomer_print() - Wyswietlanie zawartosci pliku "Customers.bin"
+void list_fcustomer_get(customer**) - Pobieranie listy z pliku "Customers.bin"
+void list_customer_print(customer**) - Wyswietlanie listy klientow
+int  list_counter_customer(customer*) - Zwracanie aktualnej ilosc struktur w liscie
+void list_counter_customer_mod(customer**) - Dodawanie +1 do kazdego nr klienta w liscie
+void list_customer_reverse(customer**) - Odwracanie listy
+void list_customer_edelete(customer**) - Usuwanie wybranego elementu listy
+void list_customer_mod(customer**) - Modyfikacja wybranego elementu listy
+void list_customer_eprint(customer**) - Wyswietla aktualny element listy
+void list_customer_delete(customer**) - Usuwanie calej listy klientow
+void list_customer_find(customer**) - Wyswietlanie szukanego elementu
+void list_customer_move(customer**,int) - Przesuwanie wskaznika na wybrany element listy
+void customer_menu(customer**) - Menu Klientow
+
+Funkcje samochodow:
+
+void list_fcar_add(car**) - Dodawanie listy do pliku "Cars.bin"
+void list_car_add(car**,int) - Dodawanie do listy samochodow
+void list_fcar_print() - Wyswietlanie zawartosci pliku "Cars.bin"
+void list_fcar_get(car**) - Pobieranie listy z pliku "Cars.bin"
+void list_car_print(car**) - Wyswietlanie listy samochodow
+int  list_counter(car*) - Zwracanie aktualnej ilosc struktur w liscie
+void list_counter_mod(car**) - Dodawanie +1 do kazdego nr pojazdu w liscie
+void list_reverse(car**) - Odwracanie listy samochodow
+void list_car_edelete(car**) - Usuwanie wybranego elementu listy
+void list_car_mod(car**) - Modyfikacja wybranego elementu listy
+void list_car_eprint(car**) - Wyswietla aktualny element listy
+void list_car_delete(car**) - Usuwanie calej listy samochodow
+void list_car_find(car**) - Wyswietlanie szukanego elementu
+void list_car_move(car**,int) - Przesuwanie wskaznika na wybrany element listy
+void list_car_split(car**,car**,car**); - rozdziela liste samochodow na polowe(wykorzystywana w sortowaniu)
+void list_car_merge_*(car**,car**,car**); - scala dwie listy samochodow w jedna sortujac(wykorzystywana w sortowaniu)
+void list_car_sort_*(car**) - funkcja sortujaca 
+void car_menu(car**);           //Menu samochodow
