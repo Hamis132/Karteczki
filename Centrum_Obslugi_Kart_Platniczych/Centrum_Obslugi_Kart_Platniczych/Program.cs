@@ -35,6 +35,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             ICentrum centrum = new Centrum();
             int exit = 0;
+            Serializacja dane = new Serializacja();
+            dane.OdczytajDane(centrum);
             while (exit == 0)
             {
                 Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - Klienci centrum" + Environment.NewLine + "2 - Centrum" + Environment.NewLine + "3 - Archiwum");
@@ -70,6 +72,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
                                                         Console.WriteLine("0 - wyjdz" + Environment.NewLine + "1 - dodaj Sklep" + Environment.NewLine + "2 - dodaj Transport" + Environment.NewLine
                                                             + "3 - Uslugi" + Environment.NewLine);
                                                         int k = int.Parse(Console.ReadLine());
+                                                        Console.WriteLine("\nLista Bankow:");
+                                                        centrum.wyswietlBanki();
                                                         switch (k)
                                                         {
                                                             case 0:

@@ -17,6 +17,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         IBank znajdzBank(string nazwa);
 
+        void wyswietlBanki();
+
         bool dodajBanki(List<IBank> bank);
 
         bool dodajBank(IBank bank);

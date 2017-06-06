@@ -19,6 +19,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             historia = new Historia();
         }
+
+        public void wyswietlBanki()
+        {
+            foreach(IBank bank in banki)
+            {
+                Console.WriteLine(bank.nazwa);
+            }
+        }
         
         public bool dodajHistorie(Historia historia)
         {
