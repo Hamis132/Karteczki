@@ -1,0 +1,11 @@
+
+System.Runtime.Serialization Przestrzeñ nazw zawiera klasy, które mog¹ s³u¿yæ do serializacji i deserializacji obiektów.
+ Serializacja jest proces konwersji obiektu lub obiektów wykresu liniowego sekwencjê bajtów do przechowywania lub przes³ania
+ go do innej lokalizacji.Deserializacja polega na pobieranie w przechowywanych informacji i ponowne utworzenie obiektów z niego.
+
+System.Runtime.Serialization.Formatters.Binary Przestrzeñ nazw zawiera BinaryFormatter klasy, która mo¿e s³u¿yæ do serializacji
+i deserializacji obiektów w formacie binarnym.
+
+Obiekt klasy BinnaryFormatter - Serializuje i deserializuje obiekt lub ca³y wykres po³¹czonych obiektów w formacie binarnym.
+
+Ÿród³o: https://msdn.microsoft.com/pl-pl/library/system.runtime.serialization(v=vs.110).aspx
