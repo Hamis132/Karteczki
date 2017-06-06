@@ -229,14 +229,23 @@ namespace Centrum_Obslugi_Kart_Platniczych
                         }
                     case 2:
                         {
+                            Console.WriteLine("podaj nrKonta i kwote");
+                            string nrKonta = Console.ReadLine();
+                            decimal kwota = decimal.Parse(Console.ReadLine());
+                            Console.WriteLine("podaj NrKarty i PIN");
+                            string NrKarty = Console.ReadLine();
+                            int PIN = int.Parse(Console.ReadLine());
+                            centrum.autoryzacja(NrKarty, PIN, kwota, nrKonta);
                             break;
                         }
                     case 3:
                         {
+                            centrum.historia.Menu();
                             break;
                         }
                     default:
                         {
+                            Console.WriteLine("zly wybor");
                             break;
                         }
                 }
