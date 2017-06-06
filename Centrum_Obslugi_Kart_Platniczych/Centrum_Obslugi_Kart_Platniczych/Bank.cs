@@ -250,8 +250,6 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             try
             {
-
-
                 IKlient klient = znajdzKlientaByNrKonta(nrKonta);
                 IKarta karta = new Karta(((Osoba)klient).imie, ((Osoba)klient).nazwisko, PIN, this.stworzNrKarty(nrKonta));
                 this.znajdzKonto(nrKonta).dodajKarte(karta);

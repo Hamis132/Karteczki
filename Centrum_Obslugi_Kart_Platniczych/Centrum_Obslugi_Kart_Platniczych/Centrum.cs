@@ -26,6 +26,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return true;
         }
 
+        public List<IFirma> getFirmy()
+        {
+            return firmy;
+        }
+
         public List<IBank> getBanki()
         {
             return banki;

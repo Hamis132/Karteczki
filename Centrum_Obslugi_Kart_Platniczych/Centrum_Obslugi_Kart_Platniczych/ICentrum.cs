@@ -27,5 +27,6 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         List<IBank> getBanki();
 
+        List<IFirma> getFirmy();
     }
 }
