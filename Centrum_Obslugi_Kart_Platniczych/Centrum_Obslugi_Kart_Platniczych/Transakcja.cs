@@ -20,17 +20,20 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public string nrKarty { get; protected set; }
 
-        public Transakcja(decimal kwota, bool udana, string nrKarty)
+        public string NrKonta { get; protected set; }
+
+        public Transakcja(decimal kwota, bool udana, string nrKarty, string nrKonta)
         {
             this.kwota = kwota;
             this.udana = udana;
             this.nrKarty = nrKarty;
+            this.NrKonta = nrKonta;
             data = DateTime.Now;
         }
 
         public override string ToString()
         {
-            return "Nr karty: " + nrKarty + " kwota: " + kwota + " udana: " + udana + " Data: " + data;
+            return "Nr karty: " + nrKarty + " na konto: "+NrKonta+ " kwota: " + kwota + " udana: " + udana + " Data: " + data;
         }
 
         public int Compare(DateTime x, DateTime y)

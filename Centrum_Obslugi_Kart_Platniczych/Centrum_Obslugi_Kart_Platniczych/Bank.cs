@@ -36,15 +36,16 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public void wypiszKlientow()
         {
+            int i = 0;
             foreach(IKlient klient in klienci)
             {
                 if(klient is IFirma)
                 {
-                    Console.WriteLine(((IFirma)klient).ToString());
+                    Console.WriteLine("{0} :{1}",i++,((IFirma)klient).ToString());
                 }
                 else
                 {
-                    Console.WriteLine(((Osoba)klient).ToString());
+                    Console.WriteLine("{0} :{1}",i++,((Osoba)klient).ToString());
                 }
             }
         }
@@ -85,7 +86,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
         private bool decyzjaTransakcji()
         {
             var rnd = new Random();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(1500);
             if(rnd.Next(0,100) < 90)
             {
                 return true;
@@ -113,6 +114,31 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return nrKonta;
         }  //Metoda tworzy konto w tym banku i przydziela nr Konta
 
+        public string stworzKonto(int index)
+        {
+            try
+            {
+                var klient = klienci[index];
+                if (klient is Osoba)
+                {
+                    string nrKonta = this.stworzNrKonta();
+                    IKonto konto = new Konto(nrKonta);
+                    klient.dodajKonto(konto);
+                    licznikKont++;
+                    return nrKonta;
+                }
+                else
+                {
+                   return stworzKontoFirmy(index);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return null;
+        }
+
         public string stworzKontoFirmy(string KRS)
         {
             try
@@ -126,8 +152,42 @@ namespace Centrum_Obslugi_Kart_Platniczych
             }
             catch(FirmaException ex)
             {
-                throw ex;
+                Console.WriteLine(ex);
             }
+            return null;
+        }
+
+        public string stworzKontoFirmy(int index)
+        {
+            try
+            {
+                var firma = klienci[index];
+                if(firma is IFirma)
+                {
+                    string nrKonta = this.stworzNrKonta();
+                IKonto konto = new Konto(nrKonta);
+                firma.dodajKonto(konto);
+                licznikKont++;
+                return nrKonta;
+                }
+            }
+            catch(FirmaException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            Console.WriteLine("Firma o podanym indexie nie istnieje...");
+            return null;
+        }
+
+        public bool usunKlienta(int index)
+        {
+            try
+            {
+                IKlient klient = klienci[index];
+                return klienci.Remove(klient);
+            }
+            catch (Exception ex) { Console.WriteLine("Indeks z poza zakresu"); }
+            return false;
         }
 
         public IFirma znajdzFirme(string KRS)
@@ -288,6 +348,24 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 Console.WriteLine(ex2);
             }
             return null;
+        }
+
+        public void wyswietlKarty()
+        {
+            int i = 0;
+            foreach(IKlient klient in klienci)
+            {
+                if (klient is Osoba)
+                {
+                    foreach (IKonto konto in klient.konta)
+                    {
+                        foreach (IKarta karta in konto.karty)
+                        {
+                            Console.WriteLine("{0} :{1}",i++,karta);
+                        }
+                    }
+                }
+            }
         }
 
         public string stworzKarteBankomatowa(string nrKonta, int PIN)

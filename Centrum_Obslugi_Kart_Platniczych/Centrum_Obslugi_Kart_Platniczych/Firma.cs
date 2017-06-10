@@ -20,9 +20,15 @@ namespace Centrum_Obslugi_Kart_Platniczych
         public Firma(ICentrum centrum, string nazwa, string KRS)
         {
             this.centrum = centrum;
-            this.centrum.firmy.Add(this);
             this.nazwa = nazwa;
             this.KRS = KRS;
+            this.centrum.firmy.Add(this);
+            
+        }
+
+        public void updateCentrum(ICentrum centrum)
+        {
+            this.centrum = centrum;
         }
 
         public bool autorisationRequest(string NrKarty, int PIN, decimal kwota, string nrKonta)
@@ -32,7 +38,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public override string ToString()
         {
-            return nazwa + " " + KRS;
+            return nazwa + " KRS: " + KRS +"\n"+"Liczba kont: "+konta.Count;
         }
     }
 }

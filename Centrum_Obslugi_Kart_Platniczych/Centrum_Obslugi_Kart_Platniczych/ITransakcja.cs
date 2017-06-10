@@ -16,5 +16,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         string nrKarty { get; }
 
+        string NrKonta { get;}
+
+
     }
 }

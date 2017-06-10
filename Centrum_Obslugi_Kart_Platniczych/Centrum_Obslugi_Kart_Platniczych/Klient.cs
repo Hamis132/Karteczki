@@ -31,9 +31,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public void wypiszKonta()
         {
+            int i = 0;
             foreach(IKonto konto in konta)
             {
-                Console.WriteLine(konto.nrKonta);
+                Console.WriteLine("{0} :{1}\nSaldo: {2}\n",i++, konto.nrKonta, konto.saldo);
             }
         }
 

@@ -25,5 +25,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
             this.PIN = PIN;
             this.NrKarty = NrKarty;
         }
+
+        public override string ToString()
+        {
+            return Imie + " " + Nazwisko + "\n" + NrKarty + " Data waznosci: " + DataWaznosci+"\n";
+        }
     }
 }

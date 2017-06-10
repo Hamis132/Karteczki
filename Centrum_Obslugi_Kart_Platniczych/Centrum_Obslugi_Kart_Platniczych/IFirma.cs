@@ -16,5 +16,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool autorisationRequest(string NrKarty, int PIN, decimal kwota, string nrKonta);
 
+        void updateCentrum(ICentrum centrum);
+
     }
 }

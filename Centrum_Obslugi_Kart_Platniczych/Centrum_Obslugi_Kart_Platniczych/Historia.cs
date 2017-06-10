@@ -12,17 +12,25 @@ namespace Centrum_Obslugi_Kart_Platniczych
     [Serializable]
     class Historia
     {
-        public List<ITransakcja> transakcje { get; protected set; }
+        public List<ITransakcja> transakcje { get; protected set; } = new List<ITransakcja>();
 
         public Historia(ITransakcja transakcja)
         {
-            transakcje = new List<ITransakcja>();
+            
             transakcje.Add(transakcja);
         }
 
         public Historia()
         {
-            transakcje = new List<ITransakcja>();
+          
+        }
+
+        public void wyswietlTransakcje()
+        {
+            foreach(ITransakcja transakcja in transakcje)
+            {
+                Console.WriteLine(transakcja);
+            }
         }
 
         public bool addTransakcja(ITransakcja transakcja)
@@ -79,9 +87,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         public void wyswietlTransakcje(List<ITransakcja> trans)
         {
+            int i = 0;
             foreach (ITransakcja transakcja in trans)
             {
-                Console.WriteLine(transakcja);
+                Console.WriteLine("{0} :{1}",i++,transakcja);
             }
         }
 

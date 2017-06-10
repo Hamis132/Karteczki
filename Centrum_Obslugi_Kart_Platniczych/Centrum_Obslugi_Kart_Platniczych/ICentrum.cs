@@ -19,6 +19,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         void wyswietlBanki();
 
+        void wyswietlFirmy();
+
         bool dodajBanki(List<IBank> bank);
 
         bool dodajBank(IBank bank);
@@ -27,10 +29,16 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         bool usunBank(string nazwa);
 
+        bool usunBank(IBank bank);
+
         bool usunFirme(string KRS);
 
-        List<IBank> getBanki();
+        bool usunFirme(IFirma firma);
+
+        bool dodajFirmy(List<IFirma> firmy);
 
         List<IFirma> getFirmy();
+
+        List<IBank> getBanki();
     }
 }

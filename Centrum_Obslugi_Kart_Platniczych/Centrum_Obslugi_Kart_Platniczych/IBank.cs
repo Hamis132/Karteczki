@@ -22,13 +22,19 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         string stworzKontoFirmy(string KRS);
 
+        string stworzKontoFirmy(int index);
+
         IFirma znajdzFirme(string KRS);
 
         void wypiszKlientow();
 
+        void wyswietlKarty();
+
         IKlient znajdzKlientaByNrKonta(string nrKonta);
 
         string stworzKonto(string PESEL);
+
+        string stworzKonto(int index);
 
         string stworzKarteKredytowa(string nrKonta, int PIN);
 
@@ -36,12 +42,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         string stworzKarteDebetowa(string nrKonta, int PIN);
 
-        IKlient znajdzKlienta(string Pesel);
+        IKlient znajdzKlienta(string identyfikator);
 
         List<IKlient> getKlienci();
 
         bool autoryzacja(string nrKarty, int PIN, decimal kwota, string NrKonta, IBank bankFirmy);
 
         bool usunKonto(string nrKonta);
+
+        bool usunKlienta(int index);
     }
 }

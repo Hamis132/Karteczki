@@ -11,20 +11,40 @@ namespace Centrum_Obslugi_Kart_Platniczych
     {
         public static List<IBank> banki { get; protected set; } = new List<IBank>();
 
-        public Historia historia { get; protected set; }
+        public Historia historia { get; protected set; } = new Historia();
 
-        public List<IFirma> firmy { get; protected set; } = new List<IFirma>();
+        public List<IFirma> firmy { get;protected set; } = new List<IFirma>();
 
         public Centrum()
         {
-            historia = new Historia();
+        }
+
+        public List<IFirma> getFirmy()
+        {
+            return firmy;
+        }
+
+        public bool dodajFirmy(List<IFirma> firmy)
+        {
+            this.firmy=firmy;
+            return true;
+        }
+
+        public void wyswietlFirmy()
+        {
+            int i = 0;
+            foreach(IFirma firma in firmy)
+            {
+                Console.WriteLine("{0} :{1}",i++,firma);
+            }
         }
 
         public void wyswietlBanki()
         {
+            int i = 0;
             foreach(IBank bank in banki)
             {
-                Console.WriteLine(bank.nazwa);
+                Console.WriteLine("{0} :{1}",i++,bank.nazwa);
             }
         }
         
@@ -34,9 +54,14 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return true;
         }
 
-        public List<IFirma> getFirmy()
+        public bool usunBank(IBank bank)
         {
-            return firmy;
+            return banki.Remove(bank);
+        }
+
+        public bool usunFirme(IFirma firma)
+        {
+            return firmy.Remove(firma);
         }
 
         public List<IBank> getBanki()
@@ -116,11 +141,34 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 IBank bankKlienta = banki[index];
                 IBank bankFirmy = banki[getIndexBankuFirmy(nrKonta)];
                 bool czyUdana = bankKlienta.autoryzacja(NrKarty, PIN, kwota, nrKonta, bankFirmy);
-                ITransakcja transakcja = new Transakcja(kwota, czyUdana, NrKarty);
-                historia.addTransakcja(transakcja);
+                updateSaldo(bankFirmy, nrKonta);
+                ITransakcja transakcja = new Transakcja(kwota, czyUdana, NrKarty, nrKonta);
+                historia.addTransakcja(transakcja);                //UWAGA!!!
                 return czyUdana;
-           
+        }
 
+        private void updateSaldo(IBank bank, string nrKonta)
+        {
+            foreach(IKlient klient in bank.klienci)
+            {
+                if(klient is IFirma)
+                {
+                    foreach(IKonto konto in klient.konta)
+                    {
+                        if(nrKonta == konto.nrKonta)
+                        {
+                            foreach(IFirma firma in firmy)
+                            {
+                                if(((IFirma)klient).KRS == firma.KRS)
+                                {
+                                    Konto _konto = (Konto)firma.znajdzKonto(nrKonta);
+                                    _konto.updateSaldo(konto.saldo);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private int getIndexBanku(string NrKarty)

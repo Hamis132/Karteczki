@@ -23,6 +23,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
             licznikKart++;
             return true;
         }
+        
+        public void updateSaldo(decimal saldo)
+        {
+            this.saldo = saldo;
+        }
 
         public decimal getSaldo()
         {
