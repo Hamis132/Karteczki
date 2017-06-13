@@ -40,12 +40,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
             foreach(IKlient klient in klienci)
             {
-                if(klient is IFirma)
-                {
-                Console.WriteLine("{0} :{1}", i++, ((IFirma)klient).Wypisz());
-                }
-                else
-                   Console.WriteLine("{0} :{1}", i++, ((Osoba)klient).Wypisz());
+                Console.WriteLine("{0} :{1}", i++, klient.Wypisz());
 
             }
         }
