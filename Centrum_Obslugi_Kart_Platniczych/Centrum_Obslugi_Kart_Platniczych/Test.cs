@@ -32,34 +32,65 @@ namespace Centrum_Obslugi_Kart_Platniczych
         }
 
         public bool Test1()
-        { 
-            bank1.dodajKlienta(osoba1);
-            bank2.dodajKlienta(osoba2);
-            bank1.dodajKlienta(osoba3);
-            bank2.dodajKlienta(osoba4);
-            
-            return true;
+        {
+            try
+            {
+                bank1.dodajKlienta(osoba1);
+                bank2.dodajKlienta(osoba2);
+                bank1.dodajKlienta(osoba3);
+                bank2.dodajKlienta(osoba4);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Test2()
         {
-            bank1.stworzKonto(osoba1.PESEL);
-            bank2.stworzKonto(osoba2.PESEL);
-            bank1.stworzKonto(osoba3.PESEL);
-            Console.WriteLine(bank2.stworzKonto(osoba4.PESEL));
-            return true;
-        }
+            try
+            {
+                bank1.stworzKonto(osoba1.PESEL);
+                bank2.stworzKonto(osoba2.PESEL);
+                bank1.stworzKonto(osoba3.PESEL);
+                Console.WriteLine(bank2.stworzKonto(osoba4.PESEL));
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            }
 
         public bool Test3()
         {
-            bank1.znajdzKlienta("124");
-            return true;
+            try
+            {
+                bank1.znajdzKlienta("124");
+                return true;
+            }
+            catch(KlientException ex)
+            {
+                return false;
+            }
+            catch(Exception ex )
+            {
+                return false;
+            }
         }
 
         public bool Test4()
         {
-            Console.WriteLine(bank2.stworzKarteDebetowa("001000000001", 1234));
-            return true;
+            try
+            {
+                bank2.stworzKarteDebetowa("001000000001", 1234);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Test5()
@@ -108,11 +139,11 @@ namespace Centrum_Obslugi_Kart_Platniczych
             
             BinaryFormatter formatter = new BinaryFormatter();
 
-            FileStream fsHistoria = new FileStream("Historia.dat", FileMode.Create);
+            FileStream fsHistoria = new FileStream("HistoriaT.dat", FileMode.Create);
             formatter.Serialize(fsHistoria, centrum.historia);
             fsHistoria.Close();
 
-            FileStream fsBanki = new FileStream("Banki.dat", FileMode.Create);
+            FileStream fsBanki = new FileStream("BankiT.dat", FileMode.Create);
             formatter.Serialize(fsBanki, centrum.getBanki());
             fsBanki.Close();
             return true;
@@ -122,7 +153,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            FileStream fsBanki = new FileStream("Banki.dat", FileMode.Open);
+            FileStream fsBanki = new FileStream("BankiT.dat", FileMode.Open);
             List<IBank> banki = (List<IBank>)formatter.Deserialize(fsBanki);
             fsBanki.Close();
             return true;

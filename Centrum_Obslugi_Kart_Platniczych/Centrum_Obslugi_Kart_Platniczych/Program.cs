@@ -21,9 +21,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
             Console.WriteLine(test.Test6());
             Console.WriteLine(test.Test7());
             Console.WriteLine(test.Test8());
-            Console.WriteLine(test.Test9());
-            Console.WriteLine(test.testZapis());
-            Console.WriteLine(test.TestOdczytu());
+            //Console.WriteLine(test.Test9());
+           // Console.WriteLine(test.testZapis());
+            //Console.WriteLine(test.TestOdczytu());
             //test.wypiszWszystko();
 
             Console.WriteLine();
@@ -36,6 +36,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             ICentrum centrum = new Centrum();
             Serializacja dane = new Serializacja();
             dane.OdczytajDane(centrum);
+           // test();
             var menu = new UI(centrum);
             menu.MenuGlowne();
             dane.Zapisz(centrum);
