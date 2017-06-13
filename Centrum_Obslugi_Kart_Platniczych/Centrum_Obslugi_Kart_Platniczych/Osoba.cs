@@ -25,7 +25,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             this.PESEL = PESEL;
         }
 
-        public override string ToString()
+        public override string Wypisz()
         {
             return "Imie: " + imie + " Nazwisko: " + nazwisko + " Pesel: " + PESEL +"\nLiczba kont: "+konta.Count;
         }

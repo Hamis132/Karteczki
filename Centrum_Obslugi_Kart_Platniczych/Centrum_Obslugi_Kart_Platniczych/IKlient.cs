@@ -18,6 +18,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         IKonto znajdzKonto(string nrKonta);
 
+        string Wypisz();
+
     }
 
 }

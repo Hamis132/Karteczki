@@ -35,7 +35,7 @@ namespace Centrum_Obslugi_Kart_Platniczych
             int i = 0;
             foreach(IFirma firma in firmy)
             {
-                Console.WriteLine("{0} :{1}",i++,firma);
+                Console.WriteLine("{0} :{1}",i++,firma.Wypisz());
             }
         }
 
