@@ -16,6 +16,8 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         void wypiszKonta();
 
+        string Wypisz();
+
         IKonto znajdzKonto(string nrKonta);
 
     }

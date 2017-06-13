@@ -18,5 +18,6 @@ namespace Centrum_Obslugi_Kart_Platniczych
 
         void updateCentrum(ICentrum centrum);
 
+        new string Wypisz();
     }
 }

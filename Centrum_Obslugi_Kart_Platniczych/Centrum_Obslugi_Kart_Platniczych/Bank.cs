@@ -37,16 +37,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
         public void wypiszKlientow()
         {
             int i = 0;
+
             foreach(IKlient klient in klienci)
             {
-                if(klient is IFirma)
-                {
-                    Console.WriteLine("{0} :{1}",i++,((IFirma)klient).ToString());
-                }
-                else
-                {
-                    Console.WriteLine("{0} :{1}",i++,((Osoba)klient).ToString());
-                }
+                Console.WriteLine("{0} :{1}", i++, klient.Wypisz());
             }
         }
 

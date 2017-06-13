@@ -37,7 +37,10 @@ namespace Centrum_Obslugi_Kart_Platniczych
                 Console.WriteLine("{0} :{1}\nSaldo: {2}\n",i++, konto.nrKonta, konto.saldo);
             }
         }
-
+        public virtual string Wypisz()
+        {
+            return ToString();
+        }
         public IKonto znajdzKonto(string nrKonta)
         {
             foreach(IKonto konto in konta)

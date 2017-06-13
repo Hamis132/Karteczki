@@ -36,9 +36,9 @@ namespace Centrum_Obslugi_Kart_Platniczych
             return centrum.autoryzacja(NrKarty, PIN, kwota, nrKonta);
         }
 
-        public override string ToString()
+        public override string Wypisz()
         {
-            return nazwa + " KRS: " + KRS +"\n"+"Liczba kont: "+konta.Count;
+            return nazwa + " KRS: " + KRS + "\n" + "Liczba kont: " + konta.Count;
         }
     }
 }
